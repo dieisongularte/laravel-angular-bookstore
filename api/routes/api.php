@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::get('/', fn() => response()->json([
     'project' => config('app.name'),
     'version' => '1.0.0'
 ]));
+
+Route::apiResource('books', BookController::class);
