@@ -9,7 +9,24 @@ import { Book } from '../../../entities/book';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  livros: any;
+  livros: Array<Book> = [
+    {
+      id: 1,
+      name: 'Teste',
+      category: 'Livro',
+      price: 100,
+      quantity: 15,
+      img: 'icone-livro',
+    },
+    {
+      id: 2,
+      name: 'Romeu e Julieta',
+      category: 'Romance',
+      price: 399.99,
+      quantity: 500,
+      img: 'icone-livro',
+    },
+  ];
 
   constructor(private requestService: ResquestService) {}
 
