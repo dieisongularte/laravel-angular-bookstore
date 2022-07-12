@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +14,7 @@ export class ResquestService {
   }
 
   getAll<T>(endpoint: string): Observable<T> {
-    let url = `${environment.apiUrl}${endpoint}`;
-    return this.http.get<T>(url, {
+    return this.http.get<T>(endpoint, {
       headers: this.getHeaders(),
     });
   }

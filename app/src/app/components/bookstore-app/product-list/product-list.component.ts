@@ -9,38 +9,23 @@ import { Book } from '../../../entities/book';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  livros: Array<Book> = [
-    {
-      id: 1,
-      name: 'Teste',
-      category: 'Livro',
-      price: 100,
-      quantity: 15,
-      img: 'icone-livro',
-    },
-    {
-      id: 2,
-      name: 'Romeu e Julieta',
-      category: 'Romance',
-      price: 399.99,
-      quantity: 500,
-      img: 'icone-livro',
-    },
-  ];
+  livros: Array<Book> = [];
 
   constructor(private requestService: ResquestService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getBooks();
+  }
 
   getBooks() {
-    let url = environment.apiUrl;
-    return this.requestService.getAll<Book>(url).subscribe({
-      next(value) {
-        console.info(value);
-      },
-      error(err) {
-        console.log(err);
-      },
-    });
+    let url = environment.apiUrl + 'books';
+    return this.requestService
+      .getAll<{ success: boolean; result: Array<Book> }>(url)
+      .subscribe({
+        next: (value) => {
+          this.livros = value.result;
+        },
+        error: (e) => console.log(e),
+      });
   }
 }
