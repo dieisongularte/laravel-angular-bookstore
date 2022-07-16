@@ -15,7 +15,11 @@ class BookController extends Controller
     public function index()
     {
         try {
-            $books = Book::all();
+            $priceDe = request()->input('de');
+            $priceAte = request()->input('ate');
+
+            $books = (!is_null($priceDe) && !is_null($priceAte)) ? Book::whereBetween('price', [$priceDe, $priceAte])->get() : Book::all();
+
             $data = ['sucess' => true, 'result' => $books];
             return response()->json($data);
         } catch(\Exception $e) {
