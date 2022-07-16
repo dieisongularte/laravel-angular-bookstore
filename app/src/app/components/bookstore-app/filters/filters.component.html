@@ -1,16 +1,16 @@
 <div class="card">
     <div class="card-header">Filtros</div>
     <div class="card-body">
-        <form>
+        <form [formGroup]="form">
             <div class="form-group">
                 <label for="de">De</label>
-                <input type="number" id="de" class="form-control" />
+                <input type="number" id="de" class="form-control" formControlName="de" />
             </div>
             <div class="form-group">
                 <label for="ate">Até</label>
-                <input type="number" id="ate" class="form-control" />
+                <input type="number" id="ate" class="form-control" formControlName="ate" />
             </div>
-            <button class="btn btn-primary btn-block btn-sm">Filtrar</button>
+            <button type="button" class="btn btn-primary btn-block btn-sm mt-3" (click)="filtrar(form.value)">Filtrar</button>
         </form>
     </div>
 </div>

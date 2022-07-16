@@ -7,3 +7,8 @@ export interface Book extends Entity {
   category: string;
   img: string;
 }
+
+export type Filtro = {
+  de: number;
+  ate: number;
+};
