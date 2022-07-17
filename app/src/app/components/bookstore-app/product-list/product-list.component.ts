@@ -5,9 +5,9 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { ResquestService } from '../../../services/resquest.service';
+import { ResquestService } from '@root/services/resquest.service';
+import { Book, Filtro } from '@root/entities/book';
 import { environment } from '../../../../environments/environment';
-import { Book, Filtro } from '../../../entities/book';
 
 @Component({
   selector: 'app-product-list',

@@ -5,12 +5,28 @@
             <div class="form-group">
                 <label for="de">De</label>
                 <input type="number" id="de" class="form-control" formControlName="de" />
+                <ng-container *ngIf="form.controls['de'].touched">
+                    <span *ngIf="form.controls['de'].errors?.['required']" class="field-error">
+                        Campo obrigatório
+                    </span>
+                    <span *ngIf="form.controls['de'].errors?.['min']" class="field-error">
+                        Informe um valor positivo
+                    </span>
+                </ng-container>
             </div>
             <div class="form-group">
                 <label for="ate">Até</label>
                 <input type="number" id="ate" class="form-control" formControlName="ate" />
+                <ng-container *ngIf="form.controls['ate'].touched">
+                    <span *ngIf="form.controls['ate'].errors?.['required']" class="field-error">
+                        Campo obrigatório
+                    </span>
+                    <span *ngIf="form.controls['ate'].errors?.['min']" class="field-error">
+                        Informe um valor positivo
+                    </span>
+                </ng-container>
             </div>
-            <button type="button" class="btn btn-primary btn-block btn-sm mt-3" (click)="filtrar(form.value)">Filtrar</button>
+            <button type="button" class="btn btn-primary btn-block btn-sm mt-3" [disabled]="!form.valid" (click)="filtrar()">Filtrar</button>
         </form>
     </div>
 </div>

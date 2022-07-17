@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Filtro } from '../../../entities/book';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Filtro } from '@root/entities/book';
 
 @Component({
   selector: 'app-filters',
@@ -14,14 +14,16 @@ export class FiltersComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      de: null,
-      ate: null,
+      de: [null, [Validators.required, Validators.min(1)]],
+      ate: [null, [Validators.required, Validators.min(1)]],
     });
   }
 
   ngOnInit(): void {}
 
-  filtrar(value: Filtro): void {
-    this.newValuesFilter.emit(value);
+  filtrar(): void {
+    if (this.form.valid) {
+      this.newValuesFilter.emit(this.form.value);
+    }
   }
 }

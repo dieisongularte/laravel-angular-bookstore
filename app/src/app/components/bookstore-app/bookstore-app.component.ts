@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Filtro } from '../../entities/book';
+import { Filtro } from '@root/entities/book';
 
 @Component({
   selector: 'app-bookstore-app',
